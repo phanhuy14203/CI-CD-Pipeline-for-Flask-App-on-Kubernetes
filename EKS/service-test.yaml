@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ci-ecr-service
+spec:
+  selector:
+    app: ci-ecr-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      nodePort: 32250
+  type: NodePort

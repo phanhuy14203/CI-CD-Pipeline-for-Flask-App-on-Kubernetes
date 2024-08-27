@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-ecr-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ci-ecr-app
+  template:
+    metadata:
+      labels:
+        app: ci-ecr-app
+    spec:
+      containers:
+      - name: ci-ecr-container
+        image: 689890720727.dkr.ecr.ap-southeast-1.amazonaws.com/ci-ecr:3.0
+        ports:
+        - containerPort: 8080
